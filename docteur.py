@@ -49,7 +49,7 @@ def afficher_horaire(prenom, nom, postnom):
             chercher_docteur.append(nom.upper())
             chercher_docteur.append(postnom.upper())
             for i in range(len(docteurs)):
-                for j in docteurs[i]:
+                for j in docteurs:
                     if chercher_docteur[0] == docteurs[i][0] and chercher_docteur[1] == docteurs[i][1] and chercher_docteur[2] == docteurs[i][2]:
                         print(f'Prénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom : {docteurs[i][2]}\nVoici son horaire :\n     Lundi :{docteurs[i][7][0]}\n       Mardi :{docteurs[i][7][1]}\n       Mercredi :{docteurs[i][7][2]}\n        Jeudi :{docteurs[i][7][3]}\n      Vendredi :{docteurs[i][7][4]}\n       Samedi{docteurs[i][7][5]}\n       Dimanche :{docteurs[i][7][6]}')
                         break
@@ -76,7 +76,7 @@ def enregistrer_horaire(prenom, nom, postnom):
     identifiants.append(postnom.upper())
     for i in range(len(docteurs)):
         #find = False
-        for j in docteurs[i]:
+        for j in docteurs:
             if  identifiants[0] ==docteurs [i][0] and  identifiants[1] ==docteurs [i][1] and  identifiants[2] ==docteurs [i][2] :
                 jour1 = input("Entrez son horaire du lundi: ")
                 jour2 = input("Entrez son horaire du mardi: ")
