@@ -1,0 +1,20 @@
+Un hopital veut migrer son système de gestion vers une application en python.
+Il vous est demandé de créer une application pour les aider dans leurs taches quotidiennes :
+ - *Enregistrer un docteur : nom, prenom, postnom, téléphone, matricule, spécialisation (ex: pédiatre, gynecologue, etc.)
+ - *Enregistrer un patient : nom, prenom, postnom, téléphone, poids, taille, genre, age, numero de dossier (un code unique que vous allez généré)
+ - *Générer un numero de dossier "unique"
+ - Chercher un patient par ses identités (nom, postnom ou prénom) et on nous retourne la liste des utilisateurs ayants ces informations
+ - Chercher un patient par le numero de dossier et on retourne le seul patient ayant ce numero
+ - *Afficher tous les patients
+ - *Afficher tous les docteurs
+ - *Enregistrer plaintes patient (ex: maux de tete, maux de ventre, etc)
+ - Enregistrer l'horaire de chaque medecin (pour une semaine)
+ - Vérifier disponibilité d'un medecin (Ajouter un rendez-vous à son horaire)
+ - Afficher les plaintes d'un patient à partir de son numero unique
+ - Afficher l'IMC (indice de masse corporel) d'un patient par à partir de son numero [IMC = poids (kg) / taille (m²)].
+		moins de 18,5	Insuffisance pondérale (maigreur)
+		18,5 à 25	Corpulence normale
+		25 à 30	Surpoids
+		30 à 35	Obésité modérée
+		35 à 40	Obésité sévère
+		plus de 40	Obésité morbide ou massive
