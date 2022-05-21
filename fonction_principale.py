@@ -1,4 +1,4 @@
-#le début du programme
+ #le début du programme
 import os
 from clear_consol import clear_consol
 from patients import enregistre_patient, chercher_patient_avec_numero_dossier, afficher_patient, afficher_les_plaintes_patient, afficher_imc_patient, chercher_patient_avec_ses_identifiants
@@ -40,19 +40,33 @@ def fonction_principale():
         fonction_principale()
         
     elif choix.lower() == "2":
-        enregistre_patient()
+        prenom_patient = input("Entrez le prenom du patient: ")
+        nom_patient = input("Entrez le nom du patient: ")
+        postnom_patient = input("Entrez le postenom du patient: ")
+        tel_patient = input("Entrez le numéro de téléphone du patient: ")
+        poids_patient = float(input("Entrez le poids du patient"))
+        taille_patient = float(input("Entrez la taille du patient: "))
+        genre_patient = input("Entrez le genre du nouveau patient M ou F: ")
+        age_patient = int(input("Entrez l'âge du patient: "))
+        plaintes_patient = input("De quoi souffre le patient: ")
+        date = input("Entrez la date de l'enregistrement avec cette anneautation 22-06-2022: ")
+        enregistre_patient(prenom_patient, nom_patient, postnom_patient, tel_patient, poids_patient, taille_patient, genre_patient, age_patient, plaintes_patient, date)
         os.system('pause')
         clear_consol()
         fonction_principale()
         
     elif choix.lower() == "3":
-        chercher_patient_avec_ses_identifiants()
+        prenom = input("Entrez le prenom du patient que vous voulez chercher: ")
+        nom = input("Entrez le nom du patient que vous voulez chercher: ")
+        postnom = input("Entrez le postnom du patient que vous voulez chercher: ")
+        chercher_patient_avec_ses_identifiants(prenom, nom, postnom)
         os.system('pause')
         clear_consol()
         fonction_principale()
         
     elif choix.lower() == "4":
-        chercher_patient_avec_numero_dossier()
+        numero_dossier = input("Entrez le numéro du dossier du patient: ")
+        chercher_patient_avec_numero_dossier(numero_dossier)
         os.system('pause')
         clear_consol()
         fonction_principale()
@@ -70,16 +84,17 @@ def fonction_principale():
         fonction_principale()
         
     elif choix.lower() == "7":
+        prenom = input("Entrez le prenom du docteur pour leque vous voulez Enregistrer l'horaire: ")
         nom = input("Entrez le nom du docteur pour leque vous voulez Enregistrer l'horaire: ")
         postnom = input("Entrez le postnom du docteur pour leque vous voulez Enregistrer l'horaire: ")
-        prenom = input("Entrez le prenom du docteur pour leque vous voulez Enregistrer l'horaire: ")
-        enregistrer_horaire(nom, postnom, prenom)
+        enregistrer_horaire(prenom, nom, postnom)
         os.system('pause')
         clear_consol()
         fonction_principale()
         
     elif choix.lower() == "8":
-        afficher_les_plaintes_patient()
+        numero_dossier = input("Entrez le numéro du dossier du patient: ")
+        afficher_les_plaintes_patient(numero_dossier)
         os.system('pause')
         clear_consol()
         fonction_principale()
@@ -108,9 +123,12 @@ def fonction_principale():
         clear_consol()
         fonction_principale()
     elif choix.lower() == "12":
-        jour = input("Pour quel jour vous voulez ajouter la tâche: ")
+        jour = input("Pour quel jour vous voulez changer la tâche: ")
         nomDocteur = input("Entrez le nom du docteur pour lequel vous voulez ajouter une tâche à l'horaire: ")
         changer_horaire(jour, nomDocteur)
+        os.system('pause')
+        clear_consol()
+        fonction_principale()
         
     else :
         print("Cette fonction n'est pas reconnu !\n\n")
