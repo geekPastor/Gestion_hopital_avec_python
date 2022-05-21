@@ -48,20 +48,21 @@ def afficher_horaire(prenom, nom, postnom):
             chercher_docteur.append(prenom.upper())
             chercher_docteur.append(nom.upper())
             chercher_docteur.append(postnom.upper())
-            for chercher_docteur in docteurs[i]:
-                if chercher_docteur in docteurs[i]:
-                    print(f'Prénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom : {docteurs[i][2]}\nVoici son horaire :\n     Lundi :{docteurs[i][7]}\n       Mardi :{docteurs[i][8]}\n       Mercredi :{docteurs[i][9]}\n        Jeudi :{docteurs[i][10]}\n      Vendredi :{docteurs[i][11]}\n       Samedi{docteurs[i][12]}\n       Dimanche :{docteurs[i][13]}')
-                    break
-                else :
-                    print("Ses identifiants ne sont pas dans la liste des docteurs")
-                    break
+            for i in range(len(docteurs)):
+                for j in docteurs[i]:
+                    if chercher_docteur[0] == docteurs[i][0] and chercher_docteur[1] == docteurs[i][1] and chercher_docteur[2] == docteurs[i][2]:
+                        print(f'Prénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom : {docteurs[i][2]}\nVoici son horaire :\n     Lundi :{docteurs[i][7][0]}\n       Mardi :{docteurs[i][7][1]}\n       Mercredi :{docteurs[i][7][2]}\n        Jeudi :{docteurs[i][7][3]}\n      Vendredi :{docteurs[i][7][4]}\n       Samedi{docteurs[i][7][5]}\n       Dimanche :{docteurs[i][7][6]}')
+                        break
+                    else :
+                        print("Ses identifiants ne sont pas dans la liste des docteurs")
+                        break
         else:
             print("Pour ce médecin l'horaire n'est pas encore enregistre")
 
 
 
 
-def enregistrer_horaire(prenom, postnom, nom):
+def enregistrer_horaire(prenom, nom, postnom):
     clear_consol()
     print("################################################################")
     print("##                                                            ##")
@@ -74,8 +75,9 @@ def enregistrer_horaire(prenom, postnom, nom):
     identifiants.append(nom.upper())
     identifiants.append(postnom.upper())
     for i in range(len(docteurs)):
-        for identifiants in docteurs[i]:
-            if identifiants in docteurs[i]:
+        #find = False
+        for j in docteurs[i]:
+            if  identifiants[0] ==docteurs [i][0] and  identifiants[1] ==docteurs [i][1] and  identifiants[2] ==docteurs [i][2] :
                 jour1 = input("Entrez son horaire du lundi: ")
                 jour2 = input("Entrez son horaire du mardi: ")
                 jour3 = input("Entrez son horaire du mercredi: ")
@@ -91,6 +93,7 @@ def enregistrer_horaire(prenom, postnom, nom):
                 horaire.append(jour6)
                 horaire.append(jour7)
                 docteurs[i].append(horaire)
+                #find = True
                 break
             else:
                 print("Ses identifiants ne sont pas dans la liste des Docteurs")
@@ -105,35 +108,35 @@ def ajouter_horaire(jour, nomDocteur):
     for i in range(len(docteurs)):
         if len(docteurs[i]) >= 8:
             for j in range(len(docteurs[i])):
-                if nomDocteur in docteurs[i]:
+                if  docteurs[i][1] == nomDocteur:
                     
                     if jour.lower() == "lundi":
                         action = input("Entrez la tâche à ajouter du lundi: ")
-                        docteurs[i][7].append(action)
+                        docteurs[i][7][0].append(action)
                                     
                     elif jour.lower() == "mardi":
                         action = input("Entrez la tâche à ajouter du mardi: ")
-                        docteurs[i][8].append(action)
+                        docteurs[i][7][1].append(action)
                                     
                     elif jour.lower() == "mercredi":
                         action = input("Entrez la tâche à ajouter du mercredi: ")
-                        docteurs[i][9].append(action)
+                        docteurs[i][7][2].append(action)
                                     
                     elif jour.lower() == "jeudi":
                         action = input("Entrez la tâche à ajouter à celle du jeudi: ")
-                        docteurs[i][10].append(action)
+                        docteurs[i][7][3].append(action)
                                     
                     elif jour.lower() == "vendredi":
                         action = input("Entrez la tâche à ajouter à celle du vendredi: ")
-                        docteurs[i][11].append(action)
+                        docteurs[i][7][4].append(action)
                                     
                     elif jour.lower() == "samedi":
                         action = input("Entrez la tâche à ajouter à celle du samedi: ")
-                        docteurs[i][12].append(action)
+                        docteurs[i][7][5].append(action)
                                     
                     elif jour.lower() == "dimanche":
                         action = input("Entrez la tâche à ajouter à celle du dimanche: ")
-                        docteurs[i][13].append(action)
+                        docteurs[i][7][6].append(action)
                                     
                     else:
                         print("Le jour que vous avez saisi n'existe pas !!")
@@ -148,34 +151,34 @@ def changer_horaire(jour, nomDocteur):
     for i in range(len(docteurs)):
         if len(docteurs[i]) >= 8:
             for j in range(len(docteurs[i])):
-                if nomDocteur in docteurs[i]:
+                if nomDocteur == docteurs[i][1]:
                     if jour.lower() == "lundi":
                         action = input("Entrez la nouvelle tâche du lundi: ")
-                        docteurs[i][7] = action
+                        docteurs[i][7][0] = action
                                     
                     elif jour.lower() == "mardi":
                         action = input("Entrez la nouvelle tâche du mardi: ")
-                        docteurs[i][8] = action
+                        docteurs[i][7][1] = action
                                     
                     elif jour.lower() == "mercredi":
                         action = input("Entrez la nouvelle tâche du mercredi: ")
-                        docteurs[i][9] = action
+                        docteurs[i][7][2] = action
                                     
                     elif jour.lower() == "jeudi":
                         action = input("Entrez la nouvelle tâche du jeudi: ")
-                        docteurs[i][10] = action
+                        docteurs[i][7][3] = action
                                     
                     elif jour.lower() == "vendredi":
                         action = input("Entrez la nouvelle tâche du vendredi: ")
-                        docteurs[i][11] = action
+                        docteurs[i][7][4] = action
                                     
                     elif jour.lower() == "samedi":
                         action = input("Entrez la nouvelle tâche du samedi: ")
-                        docteurs[i][12] = action
+                        docteurs[i][7][5] = action
                                     
                     elif jour.lower() == "dimanche":
                         action = input("Entrez la nouvelle tâche du dimanche: ")
-                        docteurs[i][13] = action
+                        docteurs[i][7][6] = action
                                     
                     else:
                         print("Le jour que vous avez saisi n'existe pas !!")
