@@ -6,7 +6,7 @@ from clear_consol import clear_consol
 
 
 patients = []
-def enregistre_patient():
+def enregistre_patient(prenom_patient, nom_patient, postnom_patient, tel_patient, poids_patient, taille_patient, genre_patient, age_patient, plaintes_patient, date):
     clear_consol()
     print("###################################################################")
     print("##                                                               ##")
@@ -15,16 +15,7 @@ def enregistre_patient():
     print("###################################################################")
     identites_patient= []
     imc = ""
-    prenom_patient = input("Entrez le prenom du patient: ")
-    nom_patient = input("Entrez le nom du patient: ")
-    postnom_patient = input("Entrez le postenom du patient: ")
-    tel_patient = input("Entrez le numéro de téléphone du patient: ")
-    poids_patient = float(input("Entrez le poids du patient"))
-    taille_patient = float(input("Entrez la taille du patient: "))
-    genre_patient = input("Entrez le genre du nouveau patient M ou F: ")
-    age_patient = int(input("Entrez l'âge du patient: "))
-    plaintes_patient = input("De quoi souffre le patient: ")
-    date = input("Entrez la date de l'enregistrement avec cette anneautation 22-06-2022: ")
+    
     indice_de_masse_corporel_patient = poids_patient / taille_patient**2
     if indice_de_masse_corporel_patient < 18.5:
         imc = "Insuffisance pondérale (maigreur)"
@@ -58,13 +49,16 @@ def enregistre_patient():
 """Chercher un patient par le numero de dossier
 et on retourne le seul patient ayant ce numero """
 
-def chercher_patient_avec_numero_dossier():
+def chercher_patient_avec_numero_dossier(numero_dossier):
+    print("#############################################")
+    print("##           Traitement en cours veillez patientez              ##")
+    print("#############################################")
+    os.system('pause')
     clear_consol()
-    numero_dossier = input("Entrez le numéro du dossier du patient: ")
     for i in range(len(patients)):
         for j in patients[i]:
             if numero_dossier == patients[i][-3]:
-                print(patients[i])
+                print(f'Prénom : {patients[i][0]}\nNom: {patients[i][1]}\n Postnom: {patients[i][2]}\nNuméro de téléphone du patient :{patients[i][-1]}\nPoids : {patients[i][3]}\nTaille : {patients[i][4]}\nGenre : {patients[i][5]}\nAge : {patients[i][6]}\nIMC : {patients[i][7]}\nPlaintes : {patients[i][8]}\nNuméro du dossier :{patients[i][9]}\nDate : {patients[i][10]}')
                 break
             else :
                 print("Aucun patuient n'a ce numéro dans la liste")
@@ -74,6 +68,10 @@ def chercher_patient_avec_numero_dossier():
 
 """Afficher tous les patients"""
 def afficher_patient():
+    print("#############################################")
+    print("##           Traitement en cours veillez patientez              ##")
+    print("#############################################")
+    os.system('pause')
     clear_consol()
     if len(patients) > 0:
         for i in range(len(patients)):
@@ -84,13 +82,16 @@ def afficher_patient():
 
 """Afficher les plaintes d'un patient à partir de son numero unique"""
 
-def afficher_les_plaintes_patient():
+def afficher_les_plaintes_patient(numero_dossier):
+    print("#############################################")
+    print("##           Traitement en cours veillez patientez              ##")
+    print("#############################################")
+    os.system('pause')
     clear_consol()
-    numero_dossier = input("Entrez le numéro du dossier du patient: ")
     for i in range(len(patients)):
         for j in patients[i]:
             if numero_dossier == patients[i][-3]:
-                print(patients[i][-4])
+                print(f'Prénom : {patients[i][0]}\nNom: {patients[i][1]}\nPostnom: {patients[i][2]}\nPlainte :{patients[i][-4]}')
                 break
             else :
                 print("Aucun patuient n'a ce numéro dans la liste")
@@ -98,11 +99,15 @@ def afficher_les_plaintes_patient():
 
                 
 def afficher_imc_patient(numero_dossier):
+    print("#############################################")
+    print("##           Traitement en cours veillez patientez              ##")
+    print("#############################################")
+    os.system('pause')
     clear_consol()
     for i in range(len(patients)):
         for j in patients[i]:
             if numero_dossier == patients[i][-3]:
-                print(patients[i][-5])
+                print(f'Prénom : {patients[i][0]}\nNom: {patients[i][1]}\nPostnom: {patients[i][2]}\nIndice de masse corporel :{patients[i][-5]}')
                 break
             else :
                 print("Aucun patuient n'a ce numéro dans la liste")
@@ -113,19 +118,21 @@ def afficher_imc_patient(numero_dossier):
 """Chercher un patient par ses identités (nom, postnom ou prénom)
 et on nous retourne la liste des utilisateurs ayants ces informations """
 
-def chercher_patient_avec_ses_identifiants():
+def chercher_patient_avec_ses_identifiants(prenom, nom, postnom):
+    print("#############################################")
+    print("##           Traitement en cours veillez patientez              ##")
+    print("#############################################")
+    os.system('pause')
     clear_consol()
     chercher_patient = []
-    nom = input("Entrez le nom du patient que vous voulez chercher: ")
-    postnom = input("Entrez le postnom du patient que vous voulez chercher: ")
-    prenom = input("Entrez le prenom du patient que vous voulez chercher: ")
+    chercher_patient.append(prenom)
     chercher_patient.append(nom)
     chercher_patient.append(postnom)
-    chercher_patient.append(prenom)
     for i in range(len(patients)):
-        if chercher_patient in patients:
-            print(f'Prénom : {patients[i][0]}\nNom: {patients[i][1]}\n Postnom: {patients[i][2]}\nPoids : {patients[i][3]}\nTaille : {patients[i][4]}\nGenre : {patients[i][5]}\nAge : {patients[i][6]}\nIMC : {patients[i][7]}\nPlaintes : {patients[i][8]}\nNuméro du dossier :{patients[i][9]}\nDate : {patients[i][10]}')
-            break
-        else :
-            print("Ses identifiants ne sont pas dans la liste des patients")
-            break
+        for j in patients[i]:
+            if chercher_patient[0] == patients [i][0] and  chercher_patient[1] ==patients [i][1] and  chercher_patient[2] ==patients [i][2]:
+                print(f'Prénom : {patients[i][0]}\nNom: {patients[i][1]}\n Postnom: {patients[i][2]}\nPoids : {patients[i][3]}\nTaille : {patients[i][4]}\nGenre : {patients[i][5]}\nAge : {patients[i][6]}\nIMC : {patients[i][7]}\nPlaintes : {patients[i][8]}\nNuméro du dossier :{patients[i][9]}\nDate : {patients[i][10]}')
+                break
+            else :
+                print("Ses identifiants ne sont pas dans la liste des patients")
+                break
