@@ -5,14 +5,9 @@ from clear_consol import clear_consol
 """définition de fonction Enregistrer un docteur : nom, prenom, postnom, téléphone
 , matricule, spécialisation (ex: pédiatre, gynecologue, etc.)"""
 docteurs = []
-
+horaire = []
 def enregistre_docteur(prenom, nom, postnom, tel, specialisation, genre):
     clear_consol()
-    print("################################################################")
-    print("##                                                            ##")
-    print("##                    ENREGISTRER UN DOCTEURS                 ##")
-    print("##                                                            ##")
-    print("################################################################")
     identites_docteur= []
     matricule = nom[0]+postnom[0]+prenom[0:4]+tel[-1:-4:-1]
     identites_docteur.append(prenom.upper())
@@ -28,56 +23,43 @@ def enregistre_docteur(prenom, nom, postnom, tel, specialisation, genre):
 """Afficher tous les docteurs"""
 def afficher_docteur():
     clear_consol()
-    print("################################################################")
-    print("##                                                            ##")
-    print("##        VOICI LA LISTE DE TOUS LES DOCTEURS                ##")
-    print("##                                                            ##")
-    print("################################################################")
     if len(docteurs) > 0:
         for i in range(len(docteurs)):
-            print(f'\nPrénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom: {docteurs[i][2]}\nSpécialité : {docteurs[i][3]}\nNuméro de téléphone : {docteurs[i][4]}\nMatricule : {docteurs[i][5]}\nGenre : {docteurs[i][6]}\n')
+            return f'\nPrénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom: {docteurs[i][2]}\nSpécialité : {docteurs[i][3]}\nNuméro de téléphone : {docteurs[i][4]}\nMatricule : {docteurs[i][5]}\nGenre : {docteurs[i][6]}\n'
     else :
-        print("La liste est encore vide !")
+        return ("La liste est encore vide !")
 
 
 def afficher_horaire(prenom, nom, postnom):
     clear_consol()
     chercher_docteur = []
+    chercher_docteur.append(prenom.upper())
+    chercher_docteur.append(nom.upper())
+    chercher_docteur.append(postnom.upper())
     for i in range(len(docteurs)):
         if len(docteurs[i]) >= 8:
-            chercher_docteur.append(prenom.upper())
-            chercher_docteur.append(nom.upper())
-            chercher_docteur.append(postnom.upper())
-            for i in range(len(docteurs)):
-                for j in docteurs:
-                    if chercher_docteur[0] == docteurs[i][0] and chercher_docteur[1] == docteurs[i][1] and chercher_docteur[2] == docteurs[i][2]:
-                        print(f'Prénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom : {docteurs[i][2]}\nVoici son horaire :\n     Lundi :{docteurs[i][7][0]}\n       Mardi :{docteurs[i][7][1]}\n       Mercredi :{docteurs[i][7][2]}\n        Jeudi :{docteurs[i][7][3]}\n      Vendredi :{docteurs[i][7][4]}\n       Samedi{docteurs[i][7][5]}\n       Dimanche :{docteurs[i][7][6]}')
-                        break
-                    else :
-                        print("Ses identifiants ne sont pas dans la liste des docteurs")
-                        break
-        else:
-            print("Pour ce médecin l'horaire n'est pas encore enregistre")
+            for j in docteurs:
+                if chercher_docteur[0] == docteurs[i][0] and chercher_docteur[1] == docteurs[i][1] and chercher_docteur[2] == docteurs[i][2]:
+                    return f'Prénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom : {docteurs[i][2]}\nVoici son horaire :\n     Lundi :{docteurs[i][7][0]}\n       Mardi :{docteurs[i][7][1]}\n       Mercredi :{docteurs[i][7][2]}\n        Jeudi :{docteurs[i][7][3]}\n      Vendredi :{docteurs[i][7][4]}\n       Samedi{docteurs[i][7][5]}\n       Dimanche :{docteurs[i][7][6]}'
+                    break
 
+
+
+#def horaire(jour1, jour2, jour3, jour4, jour5, jour6, jour7):
+    
 
 
 
 def enregistrer_horaire(prenom, nom, postnom):
     clear_consol()
-    print("################################################################")
-    print("##                                                            ##")
-    print("##             ENREGISTRER L'HORAIRE D'UN DOCTEUR               ##")
-    print("##                                                            ##")
-    print("################################################################")
-    horaire = []
     identifiants = []
+    horaire = []
     identifiants.append(prenom.upper())
     identifiants.append(nom.upper())
     identifiants.append(postnom.upper())
     for i in range(len(docteurs)):
-        #find = False
         for j in docteurs:
-            if  identifiants[0] ==docteurs [i][0] and  identifiants[1] ==docteurs [i][1] and  identifiants[2] ==docteurs [i][2] :
+            if  identifiants[0] == docteurs[i][0] and identifiants[1] == docteurs[i][1] and identifiants[2] == docteurs[i][2]:
                 jour1 = input("Entrez son horaire du lundi: ")
                 jour2 = input("Entrez son horaire du mardi: ")
                 jour3 = input("Entrez son horaire du mercredi: ")
@@ -92,11 +74,8 @@ def enregistrer_horaire(prenom, nom, postnom):
                 horaire.append(jour5)
                 horaire.append(jour6)
                 horaire.append(jour7)
+                #horaire(jour1, jour2, jour3, jour4, jour5, jour6, jour7)
                 docteurs[i].append(horaire)
-                #find = True
-                break
-            else:
-                print("Ses identifiants ne sont pas dans la liste des Docteurs")
                 break
 
 #CHRINOVIC MUKEBA
@@ -139,9 +118,7 @@ def ajouter_horaire(jour, nomDocteur):
                         docteurs[i][7][6].append(action)
                                     
                     else:
-                        print("Le jour que vous avez saisi n'existe pas !!")
-            else:
-                print("Ce nom n'est pas dans notre liste")
+                        return("Le jour que vous avez saisi n'existe pas !!")
 
 
 
@@ -181,4 +158,6 @@ def changer_horaire(jour, nomDocteur):
                         docteurs[i][7][6] = action
                                     
                     else:
-                        print("Le jour que vous avez saisi n'existe pas !!")
+                        return("Le jour que vous avez saisi n'existe pas !!")
+
+

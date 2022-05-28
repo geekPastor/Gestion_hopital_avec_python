@@ -78,7 +78,7 @@ def fonction_principale():
         fonction_principale()
         
     elif choix.lower() == "6":
-        afficher_docteur()
+        print(afficher_docteur())
         os.system('pause')
         clear_consol()
         fonction_principale()
