@@ -66,13 +66,13 @@ def fonction_principale():
         
     elif choix.lower() == "4":
         numero_dossier = input("Entrez le numéro du dossier du patient: ")
-        chercher_patient_avec_numero_dossier(numero_dossier)
+        print(chercher_patient_avec_numero_dossier(numero_dossier))
         os.system('pause')
         clear_consol()
         fonction_principale()
         
     elif choix.lower() == "5":
-        afficher_patient()
+        print(afficher_patient())
         os.system('pause')
         clear_consol()
         fonction_principale()
@@ -87,7 +87,7 @@ def fonction_principale():
         prenom = input("Entrez le prenom du docteur pour leque vous voulez Enregistrer l'horaire: ")
         nom = input("Entrez le nom du docteur pour leque vous voulez Enregistrer l'horaire: ")
         postnom = input("Entrez le postnom du docteur pour leque vous voulez Enregistrer l'horaire: ")
-        enregistrer_horaire(prenom, nom, postnom)
+        print(enregistrer_horaire(prenom, nom, postnom))
         os.system('pause')
         clear_consol()
         fonction_principale()
@@ -101,7 +101,7 @@ def fonction_principale():
         
     elif choix.lower() == "9":
         numero_dossier = input("Entrez le numéro du dossier du patient: ")
-        afficher_imc_patient(numero_dossier)
+        print(afficher_imc_patient(numero_dossier))
         os.system('pause')
         clear_consol()
         fonction_principale()
@@ -110,7 +110,7 @@ def fonction_principale():
         prenom = input("Entrez le prenom du Docteur pour lequel vous voulez voir l'horaire: ")
         nom = input("Entrez le nom du Docteur pour lequel vous voulez voir l'horaire: ")
         postnom = input("Entrez le postnom du Docteur pour lequel vous voulez voir l'horaire: ")
-        afficher_horaire(prenom, nom, postnom)
+        print(afficher_horaire(prenom, nom, postnom))
         os.system('pause')
         clear_consol()
         fonction_principale()
@@ -118,14 +118,15 @@ def fonction_principale():
     elif choix.lower() == "11":
         jour = input("Pour quel jour vous voulez ajouter la tâche: ")
         nomDocteur = input("Entrez le nom du docteur pour lequel vous voulez ajouter une tâche à l'horaire: ")
-        ajouter_horaire(jour, nomDocteur)
+        print(ajouter_horaire(jour, nomDocteur))
         os.system('pause')
         clear_consol()
         fonction_principale()
+        
     elif choix.lower() == "12":
         jour = input("Pour quel jour vous voulez changer la tâche: ")
         nomDocteur = input("Entrez le nom du docteur pour lequel vous voulez ajouter une tâche à l'horaire: ")
-        changer_horaire(jour, nomDocteur)
+        print(changer_horaire(jour, nomDocteur))
         os.system('pause')
         clear_consol()
         fonction_principale()

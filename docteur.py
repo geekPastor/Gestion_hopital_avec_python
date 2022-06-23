@@ -32,16 +32,20 @@ def afficher_docteur():
 
 def afficher_horaire(prenom, nom, postnom):
     clear_consol()
+    afficher = []
     chercher_docteur = []
     chercher_docteur.append(prenom.upper())
     chercher_docteur.append(nom.upper())
     chercher_docteur.append(postnom.upper())
+    nontrouver = "N'est pas trouver dans la liste"
     for i in range(len(docteurs)):
         if len(docteurs[i]) >= 8:
             for j in docteurs:
                 if chercher_docteur[0] == docteurs[i][0] and chercher_docteur[1] == docteurs[i][1] and chercher_docteur[2] == docteurs[i][2]:
-                    return f'Prénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom : {docteurs[i][2]}\nVoici son horaire :\n     Lundi :{docteurs[i][7][0]}\n       Mardi :{docteurs[i][7][1]}\n       Mercredi :{docteurs[i][7][2]}\n        Jeudi :{docteurs[i][7][3]}\n      Vendredi :{docteurs[i][7][4]}\n       Samedi{docteurs[i][7][5]}\n       Dimanche :{docteurs[i][7][6]}'
+                    afficher = f'Prénom : {docteurs[i][0]}\nNom: {docteurs[i][1]}\nPostnom : {docteurs[i][2]}\nVoici son horaire :\n     Lundi :{docteurs[i][7][0]}\n       Mardi :{docteurs[i][7][1]}\n       Mercredi :{docteurs[i][7][2]}\n        Jeudi :{docteurs[i][7][3]}\n      Vendredi :{docteurs[i][7][4]}\n       Samedi{docteurs[i][7][5]}\n       Dimanche :{docteurs[i][7][6]}'
+                    return afficher
                     break
+                return nontrouver
 
 
 
@@ -57,6 +61,7 @@ def enregistrer_horaire(prenom, nom, postnom):
     identifiants.append(prenom.upper())
     identifiants.append(nom.upper())
     identifiants.append(postnom.upper())
+    nontrouver = "N'est pas trouver dans la liste"
     for i in range(len(docteurs)):
         for j in docteurs:
             if  identifiants[0] == docteurs[i][0] and identifiants[1] == docteurs[i][1] and identifiants[2] == docteurs[i][2]:
@@ -77,6 +82,7 @@ def enregistrer_horaire(prenom, nom, postnom):
                 #horaire(jour1, jour2, jour3, jour4, jour5, jour6, jour7)
                 docteurs[i].append(horaire)
                 break
+            return nontrouver
 
 #CHRINOVIC MUKEBA
 
@@ -84,6 +90,7 @@ def enregistrer_horaire(prenom, nom, postnom):
 
 def ajouter_horaire(jour, nomDocteur):
     clear_consol()
+    nontrouver = "N'est pas trouver dans la liste"
     for i in range(len(docteurs)):
         if len(docteurs[i]) >= 8:
             for j in range(len(docteurs[i])):
@@ -119,12 +126,14 @@ def ajouter_horaire(jour, nomDocteur):
                                     
                     else:
                         return("Le jour que vous avez saisi n'existe pas !!")
+                return nontrouver
 
 
 
 
 def changer_horaire(jour, nomDocteur):
     clear_consol()
+    nontrouver = "N'est pas trouver dans la liste"
     for i in range(len(docteurs)):
         if len(docteurs[i]) >= 8:
             for j in range(len(docteurs[i])):
@@ -156,8 +165,7 @@ def changer_horaire(jour, nomDocteur):
                     elif jour.lower() == "dimanche":
                         action = input("Entrez la nouvelle tâche du dimanche: ")
                         docteurs[i][7][6] = action
-                                    
-                    else:
-                        return("Le jour que vous avez saisi n'existe pas !!")
+                    
+                return nontrouver
 
 
